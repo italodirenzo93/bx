@@ -5,7 +5,11 @@
 
 #include <bx/allocator.h>
 
-#include <malloc.h>
+#include <stdlib.h>
+
+#if BX_COMPILER_MSVC
+#	include <malloc.h>
+#endif // BX_
 
 #ifndef BX_CONFIG_ALLOCATOR_NATURAL_ALIGNMENT
 #	define BX_CONFIG_ALLOCATOR_NATURAL_ALIGNMENT 8
