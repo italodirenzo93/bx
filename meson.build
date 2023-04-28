@@ -13,7 +13,13 @@ bx = static_library(
 	cpp_args: ['-DBX_CONFIG_DEBUG=@0@'.format(bx_config_debug)]
 )
 
+bx_deps = []
+if host_machine.system() == 'darwin'
+	bx_deps += [dependency('foundation')]
+endif
+
 bx_dep = declare_dependency(
 	include_directories: include_directories('include'),
-	link_with: bx
+	link_with: bx,
+	dependencies: bx_deps
 )
